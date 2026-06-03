@@ -14,9 +14,22 @@ addBtn.addEventListener("click", () => {
     }
 
     const li = document.createElement("li");
-    li.textContent = taskText;
 
-    taskList.appendChild(li);
+li.innerHTML = `
+    <span>${taskText}</span>
+    <button class="deleteBtn">Delete</button>
+`;
+
+const deleteBtn = li.querySelector(".deleteBtn");
+
+deleteBtn.addEventListener("click", () => {
+    li.remove();
+
+    count--;
+    taskCount.textContent = count;
+});
+
+taskList.appendChild(li);
 
     count++;
     taskCount.textContent = count;
